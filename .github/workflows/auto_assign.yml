@@ -2,8 +2,8 @@
 addAssignees: true
 addReviewers: true
 
+on: push
+
 # A list of reviewers to be added to pull requests (GitHub user name)
 reviewers:
   - mrgreyves
-
-numberOfReviewers: 0
