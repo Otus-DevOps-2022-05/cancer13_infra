@@ -31,6 +31,6 @@ Host someinternalhost
 https://51.250.6.155.sslip.io
 
 ```
-bastion_IP = 51.250.92.254
+bastion_IP = 51.250.6.155
 someinternalhost_IP = 10.128.0.15
 ```
