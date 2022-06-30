@@ -1,8 +1,12 @@
 #!/bin/bash
-echo "deb [ trusted=yes ] https://ftp.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/ xenial/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-apt-get update --allow-unauthenticated
-apt-get install -y mongodb git
+wget https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org_4.2.20_amd64.deb
+wget https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-tools_4.2.20_amd64.deb
+wget https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-shell_4.2.20_amd64.deb
+wget https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.20_amd64.deb
+wget https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-mongos_4.2.20_amd64.deb
 
-systemctl enable mongodb
-systemctl start mongodb
-systemctl status mongodb
+apt install ./mongodb-org*.deb -y
+
+systemctl enable mongod
+systemctl start mongod
+systemctl status mongod

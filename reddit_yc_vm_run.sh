@@ -10,4 +10,4 @@ yc compute instance create \
 
 sleep 60 # wait vm is up
 
-ssh -i ~/.ssh/appuser appuser@$(yc compute instance get reddit-app --format json | jq -r '.network_interfaces[].primary_v4_address.one_to_one_nat.address') "bash -s" < ./install_ruby.sh ./install_mongodb.sh ./deploy.sh
+ssh -i ~/.ssh/appuser yc-user@$(yc compute instance get reddit-app --format json | jq -r '.network_interfaces[].primary_v4_address.one_to_one_nat.address') "bash -s" < ./install_ruby.sh ./install_mongodb.sh ./deploy.sh
