@@ -39,3 +39,8 @@ someinternalhost_IP = 10.128.0.15
 testapp_IP = 51.250.67.131
 testapp_port = 9292
 ```
+# HW5
+Правильна дока Packer'а https://www.packer.io/docs/templates/legacy_json_templates/user-variables
+
+Подготовка хоста вынесена в pre_host.sh
+Доп задание выполнено
