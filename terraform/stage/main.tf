@@ -28,7 +28,6 @@ module "db" {
 resource "yandex_vpc_network" "stage-network" {
   name = "stage-app-network"
 }
-
 resource "yandex_vpc_subnet" "stage-subnet" {
   name           = "stage-subnet"
   zone           = "ru-central1-a"

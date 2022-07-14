@@ -1,0 +1,10 @@
+# service_account_key_file = беру из переменной окружения TF_VAR_service_account_key_file
+cloud_id         = "some_string"
+folder_id        = "some_string"
+zone             = "ru-central1-a"
+image_id         = "some_string"
+subnet_id        = "some_string"
+public_key_path  = "~/.ssh/id.pub"
+private_key_path = "~/.ssh/id"
+db_disk_image = "some_string"
+app_disk_image = "some_string"
