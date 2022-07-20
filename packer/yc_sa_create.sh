@@ -12,3 +12,5 @@ yc resource-manager folder add-access-binding --id $FOLDER_ID \
 --role editor \
 --service-account-id $ACCT_ID
 sleep 5
+
+yc iam key create --service-account-id $ACCT_ID --output ../"$SVC_ACCT"_"$FOLDER_ID"_key.json
