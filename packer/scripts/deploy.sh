@@ -10,5 +10,3 @@ systemctl daemon-reload
 systemctl enable reddit.service
 systemctl start reddit.service
 systemctl status reddit.service
-
-
