@@ -1,0 +1,9 @@
+app:
+  hosts:
+%{ for ip in app ~}
+    ${ip}:
+%{ endfor ~}
+
+bd:
+  hosts:
+    ${bd}:
