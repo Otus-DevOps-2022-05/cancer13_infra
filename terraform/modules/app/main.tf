@@ -1,8 +1,17 @@
+terraform {
+  required_providers {
+    yandex = {
+      source  = "yandex-cloud/yandex"
+      version = "0.76.0"
+    }
+  }
+}
 resource "yandex_compute_instance" "app" {
-  count = 2
+  count = 1
   name = "reddit-app-${count.index}"
-  zone = var.zone
-
+  labels = {
+    tags = "reddit-app"
+  }
   resources {
     core_fraction = 20 # for economy
     cores         = 2
@@ -10,15 +19,15 @@ resource "yandex_compute_instance" "app" {
   }
   boot_disk {
     initialize_params {
-      image_id = var.image_id
+      image_id = var.app_disk_image
     }
   }
   network_interface {
     subnet_id = var.subnet_id
-    nat       = true
+    nat = true
   }
   metadata = {
-    ssh-keys = "ubuntu:${file(var.public_key_path)}"
+  ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
   connection {
     type        = "ssh"
@@ -28,11 +37,11 @@ resource "yandex_compute_instance" "app" {
     private_key = file(var.private_key_path)
   }
   provisioner "file" {
-    source      = "files/reddit.service"
+    source      = "${path.module}/files/reddit.service"
     destination = "/tmp/reddit.service"
   }
   provisioner "remote-exec" {
-    script = "files/deploy.sh"
+    script = "${path.module}/files/deploy.sh"
   }
   provisioner "remote-exec" { # https://github.com/hashicorp/terraform/issues/18517
     inline = [
