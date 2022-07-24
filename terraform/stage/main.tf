@@ -45,8 +45,8 @@ resource "local_file" "ansible_inventory" {
   content = templatefile("templates/inventry.j2",
     {
       app = module.app.external_ip_address_app
-      bd = module.db.external_ip_address_db
+      db = module.db.external_ip_address_db
     }
   )
-  filename = "../../ansible/stage/inventory.yml"
+  filename = "../../ansible/inventory.yml"
 }
