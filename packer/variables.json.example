@@ -1,6 +1,5 @@
 {
     "folder_id": "some_folder_id",
     "source_image_family": "ubuntu-1604-lts",
-    "service_account_key_file": "/path/to/key/key.json",
     "serial_log_file": "/tmp/packer_build.log-{{timestamp}}"
 }
