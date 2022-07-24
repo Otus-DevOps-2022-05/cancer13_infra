@@ -48,5 +48,5 @@ resource "local_file" "ansible_inventory" {
       bd = module.db.external_ip_address_db
     }
   )
-  filename = "../../stage/ansible/inventory.yml"
+  filename = "../../ansible/stage/inventory.yml"
 }
