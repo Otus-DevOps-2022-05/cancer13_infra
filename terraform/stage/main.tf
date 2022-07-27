@@ -35,3 +35,18 @@ resource "yandex_vpc_subnet" "stage-subnet" {
   network_id     = "${yandex_vpc_network.stage-network.id}"
   v4_cidr_blocks = ["10.0.1.0/24"]
 }
+
+# generate inventory file for Ansible
+resource "local_file" "ansible_inventory" {
+  depends_on = [
+    module.app,
+    module.db
+  ]
+  content = templatefile("templates/inventry.j2",
+    {
+      app = module.app.external_ip_address_app
+      bd = module.db.external_ip_address_db
+    }
+  )
+  filename = "../../ansible/stage/inventory.yml"
+}
