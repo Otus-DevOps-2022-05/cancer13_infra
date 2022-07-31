@@ -1,6 +1,7 @@
 ---
 - name: Deploy app
   hosts: app
+  become: true
   tasks:
     - name: Fetch the latest version of application code
       git:
