@@ -1,0 +1,33 @@
+---
+- name: Download mongo from ya ftp
+  get_url:
+    url: "{{ item }}"
+    dest: /home/ubuntu
+  with_items:
+    - https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org_4.2.20_amd64.deb
+    - https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-tools_4.2.20_amd64.deb
+    - https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-shell_4.2.20_amd64.deb
+    - https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-server_4.2.20_amd64.deb
+    - https://mirror.yandex.ru/mirrors/repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.2/multiverse/binary-amd64/mongodb-org-mongos_4.2.20_amd64.deb
+  tags: install
+
+- wait_for: # need wait before install (apt lock file error issue)
+    timeout: 5
+  tags: install
+
+- name: install mongodb
+  become: true
+  shell: "apt-get install /home/ubuntu/mongodb-org*.deb -y"
+  register: apt
+  tags: install
+
+- debug:
+    var: apt
+  tags: install
+
+- name: Configure service supervisor
+  systemd:
+    name: mongod
+    enabled: yes
+    state: started
+  tags: install

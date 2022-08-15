@@ -7,3 +7,11 @@ packer/variables.json
 *.retry
 jdauphant.nginx
 *.key
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
+Pipfile*
