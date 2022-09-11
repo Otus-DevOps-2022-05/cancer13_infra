@@ -137,4 +137,7 @@ verifier:
       that: true
 ```
 # HW9 gitlab-ci-1
+Выполнено основное задание.
 
+Добавлен интеграция Slack
+https://devops-team-otus.slack.com/archives/C03LTHW838W
