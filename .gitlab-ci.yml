@@ -4,7 +4,6 @@ stages:
   - build
   - test
   - review
-  - deploy
 
 build_job:
   stage: build
@@ -37,8 +36,3 @@ deploy_dev_job:
   environment:
     name: dev
     url: http://dev.example.com
-
-deploy_job:
-  stage: deploy
-  script:
-    - echo 'Deploy'
