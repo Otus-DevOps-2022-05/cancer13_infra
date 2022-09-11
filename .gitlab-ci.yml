@@ -1,5 +1,5 @@
 stages:
-  - test_unit_job
+  - test
 
 variables:
  DATABASE_URL: 'mongodb://mongo/user_posts'
