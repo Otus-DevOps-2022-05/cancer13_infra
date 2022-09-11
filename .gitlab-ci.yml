@@ -6,6 +6,7 @@ stages:
   - production
 
 build_job:
+  image: ruby:2.4.2
   stage: build
   script:
     - echo 'Building'
@@ -14,6 +15,7 @@ variables:
   DATABASE_URL: 'mongodb://mongo/user_posts'
 
 before_script:
+  image: ruby:2.4.2
   - cd reddit
   - bundle install
 
@@ -51,7 +53,9 @@ stage:
 
 production:
   stage: production
-  when: manual 
+  when: manual
+  only:
+    - /^\d+\.\d+\.\d+/
   script:
     - echo 'Deploy'
   environment:
