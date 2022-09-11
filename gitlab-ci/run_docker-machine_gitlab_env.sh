@@ -2,9 +2,9 @@
 yc compute instance create \
   --name docker-gitlab \
   --hostname docker-host \
-  --memory=4 \
-  --cores 2 \
-  --core-fraction 20 \
+  --memory=8 \
+  --cores=4 \
+  --core-fraction=5 \
   --preemptible \
   --zone ru-central1-a \
   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
