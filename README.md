@@ -136,7 +136,7 @@ verifier:
     ansible.builtin.assert:
       that: true
 ```
-# HW9 gitlab-ci-1
+# HW15 gitlab-ci-1
 Выполнено основное задание.
 
 Добавлен интеграция Slack
